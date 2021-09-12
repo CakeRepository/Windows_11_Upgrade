@@ -8,9 +8,9 @@ param(
 $savePath = "c:\windows\temp\win11.iso"
 
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile($url,$savePathi);  
+$WebClient.DownloadFile($url,$savePath);  
 
-$vol = Mount-DiskImage -ImagePath $FilePath  -PassThru |
+$vol = Mount-DiskImage -ImagePath $savePath  -PassThru |
 	Get-DiskImage | 
 	Get-Volume
 $installer = '{0}:\setup.exe' -f $vol.DriveLetter
