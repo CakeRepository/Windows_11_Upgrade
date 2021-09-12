@@ -2,9 +2,14 @@ function Install-Windows11 {
 [CmdletBinding()]
 param(
   [Parameter(Mandatory=$true)]
-  [String]$FilePath,
+  [String]$url,
   [String]$extraArgs
   ) 
+$savePath = "c:\windows\temp\win11.iso"
+
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile($url,$savePathi);  
+
 $vol = Mount-DiskImage -ImagePath $FilePath  -PassThru |
 	Get-DiskImage | 
 	Get-Volume
